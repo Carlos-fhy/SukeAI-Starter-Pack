@@ -31,12 +31,12 @@ export default defineConfig({
         { tag: 'link', attrs: { rel: 'stylesheet', href: `${WENKAI}/lxgwwenkai-bold.css` } }
       ],
       sidebar: [
-        { label: '第一阶段：国内 AI 入门', autogenerate: { directory: '01-newbie' } },
-        { label: '第二阶段：AI 日常任务', autogenerate: { directory: '02-main-quests' } },
-        { label: '第三阶段：AI 能力地图', autogenerate: { directory: '03-capabilities' } },
-        { label: '第四阶段：工具扩展', autogenerate: { directory: '04-toolbox' } },
-        { label: '第五阶段：进阶驾驭', autogenerate: { directory: '05-advanced' } },
-        { label: '开荒者社区', autogenerate: { directory: '06-community' } },
+        { label: '第一阶段：新手村', autogenerate: { directory: '01-newbie' } },
+        { label: '第二阶段：主线任务', autogenerate: { directory: '02-main-quests' } },
+        { label: '第三阶段：技能树', autogenerate: { directory: '03-capabilities' } },
+        { label: '第四阶段：装备库', autogenerate: { directory: '04-toolbox' } },
+        { label: '第五阶段：进阶副本', autogenerate: { directory: '05-advanced' } },
+        { label: '第六阶段：开荒团', autogenerate: { directory: '06-community' } },
         { label: '实操教程', autogenerate: { directory: 'tutorials' } }
       ]
     })

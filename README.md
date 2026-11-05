@@ -6,17 +6,17 @@
 
 ## 学习路线
 
-1. [第一阶段：国内 AI 入门](docs/01-newbie/index.md)
-2. [第二阶段：AI 日常任务](docs/02-main-quests/index.md)
-3. [第三阶段：AI 能力地图](docs/03-capabilities/index.md)
-4. [第四阶段：工具扩展](docs/04-toolbox/index.md)
-5. [第五阶段：进阶驾驭](docs/05-advanced/index.md)
-6. [开荒者社区](docs/06-community/index.md)
-7. [实操教程](docs/tutorials/index.md)
+1. [第一阶段：新手村](src/content/docs/01-newbie/index.mdx)
+2. [第二阶段：主线任务](src/content/docs/02-main-quests/index.mdx)
+3. [第三阶段：技能树](src/content/docs/03-capabilities/index.mdx)
+4. [第四阶段：装备库](src/content/docs/04-toolbox/index.mdx)
+5. [第五阶段：进阶副本](src/content/docs/05-advanced/index.mdx)
+6. [第六阶段：开荒团](src/content/docs/06-community/index.mdx)
+7. [实操教程](src/content/docs/tutorials/index.mdx)
 
 ## 项目目录
 
-- `docs/`：网站展示的文档内容；
+- `src/content/docs/`：网站展示的文档内容；
 - `examples/`：提示词、数据分析、写作、代码和 Agent 示例；
 - `archives/`：历史内容和获得授权的资料；
 - `scripts/`：文档检查与构建辅助脚本；
