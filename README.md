@@ -1,24 +1,27 @@
-# 苏州科技大学 AI 开荒指南
+# 大学生 AI 开荒指南
 
-> 面向苏州科技大学学生的 AI 入门与实践指南。
+> 面向所有大学生的 AI 使用与驾驭指南。
 
-本项目将 AI 学习内容按主题拆分到 `docs/` 目录，方便后续持续补充和维护。
+本项目不以某个专业为中心，而是按照 AI 的学习阶段、实际任务、能力边界和工具组合，帮助大学生从“会使用”逐步走向“会驾驭”。
 
-## 文档目录
+## 学习路线
 
-1. [网络与基础准备](docs/01-network/README.md)
-   - [科学上网与常见客户端](docs/01-network/network.md)
-2. [国内 AI 模型入门](docs/02-models/README.md)
-   - [模型基础与选择建议](docs/02-models/models.md)
-3. [AI 软件与工具](docs/03-tools/README.md)
-   - [对话、编程与效率工具](docs/03-tools/tools.md)
-4. [Agent 工具入门](docs/04-agents/README.md)
-   - [Agent 概念与常见工具](docs/04-agents/agents.md)
-5. [校园学习场景实践](docs/05-practice/README.md)
-6. [提示词与工作流](docs/06-workflows/README.md)
-7. [隐私、安全与学术规范](docs/07-safety/README.md)
-8. [进阶路线](docs/08-roadmap/README.md)
+1. [第一阶段：国内 AI 入门](docs/01-newbie/index.md)
+2. [第二阶段：AI 日常任务](docs/02-main-quests/index.md)
+3. [第三阶段：AI 能力地图](docs/03-capabilities/index.md)
+4. [第四阶段：工具扩展](docs/04-toolbox/index.md)
+5. [第五阶段：进阶驾驭](docs/05-advanced/index.md)
+6. [开荒者社区](docs/06-community/index.md)
+7. [实操教程](docs/tutorials/index.md)
 
-## 项目说明
+## 项目目录
 
-本指南会持续补充各平台的基础使用、校园场景案例、Agent 实战和常见问题。使用 AI 时请遵守相关法律法规、学校规定、服务条款和学术规范。
+- `docs/`：网站展示的文档内容；
+- `examples/`：提示词、数据分析、写作、代码和 Agent 示例；
+- `archives/`：历史内容和获得授权的资料；
+- `scripts/`：文档检查与构建辅助脚本；
+- `code/`：可运行的代码示例。
+
+网站使用 Astro + Starlight 构建，开发时运行 `npm install` 安装依赖，再运行 `npm run dev` 预览。
+
+欢迎通过 [贡献指南](CONTRIBUTING.md) 推荐资料、纠正文档或补充教程。
