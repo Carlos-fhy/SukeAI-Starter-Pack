@@ -1,0 +1,59 @@
+---
+title: 未标记的路径
+description: 这个页面还没有被画进地图。
+template: splash
+pagefind: false
+editUrl: false
+hero:
+  title: '<span class="hero-eyebrow">404 · Uncharted</span>这条路径<em>还没</em>画上地图'
+  tagline: 你要找的页面可能被移动、改名，或者仍在施工。回到营地，重新选一条路就好。
+  actions:
+    - text: 返回营地
+      icon: right-arrow
+      link: /SukeAI-Starter-Pack/
+    - text: 查看能力地图
+      variant: secondary
+      icon: open-book
+      link: /SukeAI-Starter-Pack/03-capabilities/
+---
+
+export const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+
+<div class="lost-trail">
+
+<span class="lost-label">三种可能</span>
+
+<ol class="lost-reasons">
+	<li><span class="lost-num">01</span>链接拼写有误，或末尾的斜杠多了、少了。</li>
+	<li><span class="lost-num">02</span>我们在整理目录时，把这篇内容移动或改名了。</li>
+	<li><span class="lost-num">03</span>这篇内容还在施工，暂时没有发布。</li>
+</ol>
+
+<span class="lost-label">从这些路标重新出发</span>
+
+<div class="lost-grid">
+	<a class="lost-card" href={base + '01-newbie/'}>
+		<span class="lost-idx">01</span>
+		<strong>国内 AI 入门</strong>
+		<span class="lost-desc">注册平台、认识大模型、写出第一条好提示词。</span>
+	</a>
+	<a class="lost-card" href={base + '02-main-quests/'}>
+		<span class="lost-idx">02</span>
+		<strong>大学主线任务</strong>
+		<span class="lost-desc">论文、PPT、笔记、复习与数据分析。</span>
+	</a>
+	<a class="lost-card" href={base + '03-capabilities/'}>
+		<span class="lost-idx">03</span>
+		<strong>能力地图</strong>
+		<span class="lost-desc">检索、写作、翻译、编程与多模态。</span>
+	</a>
+	<a class="lost-card" href={base + '04-toolbox/'}>
+		<span class="lost-idx">04</span>
+		<strong>工具军火库</strong>
+		<span class="lost-desc">对话模型、编程工具、办公与开源方案。</span>
+	</a>
+</div>
+
+<p class="lost-foot">还是找不到？去 <a href="https://github.com/Carlos-fhy/SukeAI-Starter-Pack/issues">GitHub Issues</a> 告诉我们你想看什么。</p>
+
+</div>

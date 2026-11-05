@@ -1,0 +1,16 @@
+---
+title: 实操教程
+description: 完整、可复现、步骤明确的 AI 上手教程。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+这里存放完整、可复现、步骤明确的教程。每篇教程都说明环境、依赖、操作步骤、预期结果和常见问题。跟着做一遍，比读十篇介绍更有用。
+
+<CardGrid>
+	<LinkCard title="开发环境" description="编辑器、Python、Git 与练习仓库的准备清单。" href="beginner/environment/" />
+	<LinkCard title="编程入门" description="面向 AI 学习的 Python 与调试基础。" href="beginner/programming/" />
+	<LinkCard title="Git 与 GitHub" description="仓库创建、提交、分支与 Pull Request。" href="beginner/git-github/" />
+	<LinkCard title="第一个 LLM 应用" description="用最小示例跑通一次模型调用。" href="creation/first-llm/" />
+	<LinkCard title="PyTorch 环境配置" description="操作系统、Python、PyTorch 与 CUDA 版本对齐。" href="learning/pytorch-setup/" />
+</CardGrid>

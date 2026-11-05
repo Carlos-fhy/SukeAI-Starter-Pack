@@ -1,14 +1,35 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
 
+const WENKAI = 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0';
+
 export default defineConfig({
   site: 'https://carlos-fhy.github.io',
   base: '/SukeAI-Starter-Pack',
   integrations: [
     starlight({
       title: '大学生 AI 开荒指南',
-      description: '面向所有大学生的 AI 使用与驾驭指南',
+      description: '从第一次提问到独立驾驭 AI，写给所有大学生的开源使用指南。',
+      logo: {
+        src: './src/assets/logo.svg',
+        alt: '大学生 AI 开荒指南'
+      },
+      locales: {
+        root: { label: '简体中文', lang: 'zh-CN' }
+      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/Carlos-fhy/SukeAI-Starter-Pack' }
+      ],
+      editLink: {
+        baseUrl: 'https://github.com/Carlos-fhy/SukeAI-Starter-Pack/edit/main/'
+      },
+      credits: false,
       customCss: ['./src/styles/custom.css'],
+      head: [
+        { tag: 'link', attrs: { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: true } },
+        { tag: 'link', attrs: { rel: 'stylesheet', href: `${WENKAI}/lxgwwenkai-regular.css` } },
+        { tag: 'link', attrs: { rel: 'stylesheet', href: `${WENKAI}/lxgwwenkai-bold.css` } }
+      ],
       sidebar: [
         { label: '第一阶段：国内 AI 入门', autogenerate: { directory: '01-newbie' } },
         { label: '第二阶段：AI 日常任务', autogenerate: { directory: '02-main-quests' } },

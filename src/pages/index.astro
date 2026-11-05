@@ -1,0 +1,786 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+
+const docs = await getCollection('docs');
+const isIndexEntry = (id: string) => /(^|\/)index\.mdx?$/.test(id);
+const countIn = (dir: string) =>
+	docs.filter((entry) => entry.id.startsWith(`${dir}/`) && !isIndexEntry(entry.id)).length;
+
+const stages = [
+	{
+		dir: '01-newbie',
+		icon: '🌱',
+		label: '第一阶段',
+		title: '国内 AI 入门',
+		desc: '降低注册和访问门槛，先建立"会提问、会判断、会保护隐私"的基本习惯。',
+	},
+	{
+		dir: '02-main-quests',
+		icon: '📚',
+		label: '第二阶段',
+		title: 'AI 日常任务',
+		desc: '把 AI 放进备考、读文献、写论文、做 PPT 和处理数据的真实场景里。',
+	},
+	{
+		dir: '03-capabilities',
+		icon: '⚔️',
+		label: '第三阶段',
+		title: 'AI 能力地图',
+		desc: '看清 AI 能做什么、做不到什么，让每一项工具都用在它擅长的地方。',
+	},
+	{
+		dir: '04-toolbox',
+		icon: '🧰',
+		label: '第四阶段',
+		title: '工具扩展',
+		desc: '按需装配聊天、办公、创作、编程与自动化工具，不为工具而工具。',
+	},
+	{
+		dir: '05-advanced',
+		icon: '🗺️',
+		label: '第五阶段',
+		title: '进阶驾驭',
+		desc: '搭建个人知识库、自动化流程与 Agent，把 AI 接进自己的长期系统。',
+	},
+	{
+		dir: '06-community',
+		icon: '🏕️',
+		label: '开荒者社区',
+		title: '一起把地图画完',
+		desc: '分享经验、提交资源、参与共建，让下一位开荒者少走一段夜路。',
+	},
+].map((stage) => ({ ...stage, count: countIn(stage.dir) }));
+
+const guideCount = stages.reduce((total, stage) => total + stage.count, 0);
+const tutorialCount = countIn('tutorials');
+const repoUrl = 'https://github.com/Carlos-fhy/SukeAI-Starter-Pack';
+
+const quickStarts = [
+	{
+		tag: '10 分钟',
+		title: '完成第一次 AI 对话',
+		desc: '从一句清楚的需求开始，学会给背景、给目标、给验收标准。',
+		href: `${base}01-newbie/prompting/`,
+		tone: 'pine',
+	},
+	{
+		tag: '今晚要用',
+		title: '让 AI 帮你写论文',
+		desc: '列提纲、查逻辑、润色表达，但不伪造引用，也不代替你的判断。',
+		href: `${base}02-main-quests/writing-and-papers/`,
+		tone: 'ember',
+	},
+	{
+		tag: '明天要讲',
+		title: '做一份能讲清楚的 PPT',
+		desc: '先定结构再生成内容，让每一页只承担一个观点。',
+		href: `${base}02-main-quests/ppt-and-documents/`,
+		tone: 'gold',
+	},
+];
+
+const rules = [
+	{
+		num: 'I',
+		title: '先会用，再精通',
+		desc: '不必先学完原理。打开一个真实任务，边做边建立判断，比收藏一百篇教程有用。',
+	},
+	{
+		num: 'II',
+		title: '把它当实习生',
+		desc: '给背景、给目标、给标准，然后逐条检查。它很快，但不会自动替你负责。',
+	},
+	{
+		num: 'III',
+		title: '保留你的署名',
+		desc: '事实要核对，引用要溯源，最终判断必须是你自己的。AI 是工具，不是作者。',
+	},
+];
+
+const heroMap = `
+<svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+	<circle cx="210" cy="210" r="196" stroke="var(--line-strong)" stroke-width="1.5" fill="var(--paper-raised)" fill-opacity=".45"/>
+	<circle cx="210" cy="210" r="181" stroke="var(--line-strong)" stroke-width="10" stroke-dasharray="1.5 14.5" opacity=".55"/>
+	<circle cx="210" cy="210" r="150" stroke="var(--line)" stroke-width="1" opacity=".8"/>
+	<path d="M70 235C60 180 110 135 165 145c55 10 70-30 125-15 55 15 70 70 45 115-25 45-75 40-110 60-45 25-140-10-155-70Z" stroke="var(--line-strong)" stroke-width="1.2" opacity=".5"/>
+	<path d="M110 230c-5-35 30-65 70-58 40 8 65-22 105-10 40 12 40 53 20 80-20 26-60 16-90 30-37 18-97 0-105-42Z" stroke="var(--line-strong)" stroke-width="1.2" opacity=".35"/>
+	<path d="M95 315c25-45 60-15 83-53s27-57 67-67 55-30 65-75" stroke="var(--ember)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 8" opacity=".85"/>
+	<circle cx="95" cy="315" r="6" fill="var(--ember)"/>
+	<circle cx="178" cy="262" r="5" fill="var(--paper-raised)" stroke="var(--ember)" stroke-width="2"/>
+	<circle cx="245" cy="195" r="5" fill="var(--paper-raised)" stroke="var(--ember)" stroke-width="2"/>
+	<circle cx="310" cy="120" r="5" fill="var(--paper-raised)" stroke="var(--ember)" stroke-width="2"/>
+	<path d="M310 120V96l16 6-16 6" stroke="var(--ember)" stroke-width="2" stroke-linejoin="round"/>
+	<path d="M210 142 222 198 210 210 198 198Z" fill="var(--ember)"/>
+	<path d="M278 210 222 222 210 210 222 198Z" fill="var(--line-strong)"/>
+	<path d="M210 278 198 222 210 210 222 222Z" fill="var(--line-strong)"/>
+	<path d="M142 210 198 198 210 210 198 222Z" fill="var(--line-strong)"/>
+	<circle cx="210" cy="210" r="4.5" fill="var(--paper-raised)" stroke="var(--ink)" stroke-width="1.5"/>
+	<g fill="var(--ink-faint)" font-family="var(--font-mono)" font-size="12" letter-spacing="1.5" text-anchor="middle">
+		<text x="210" y="56">N</text>
+		<text x="376" y="215">E</text>
+		<text x="210" y="378">S</text>
+		<text x="44" y="215">W</text>
+	</g>
+	<g stroke="var(--line-strong)" stroke-width="1.5" stroke-linecap="round" opacity=".7">
+		<path d="M66 92h12M72 86v12"/>
+		<path d="M348 96h12M354 90v12"/>
+		<path d="M62 332h12M68 326v12"/>
+		<path d="M352 322h12M358 316v12"/>
+	</g>
+</svg>`;
+---
+
+<StarlightPage
+	frontmatter={{
+		title: '大学生 AI 开荒指南',
+		description: '从第一次提问到独立驾驭 AI，写给所有大学生的开源使用指南。',
+		template: 'splash',
+		hero: {
+			title: '<span class="hero-eyebrow">Open Field Guide · No. 01</span>大学生 <em>AI</em> 开荒指南',
+			tagline: '从第一次提问，到独立驾驭。写给所有大学生的第一本 AI 使用手册。',
+			image: { html: heroMap },
+			actions: [
+				{ text: '开始开荒', link: `${base}01-newbie/`, icon: 'right-arrow' },
+				{ text: '查看能力地图', link: `${base}03-capabilities/`, variant: 'secondary', icon: 'open-book' },
+			],
+		},
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<div class="home">
+		<dl class="stats">
+			<div>
+				<dt>06</dt>
+				<dd>阶段路线</dd>
+			</div>
+			<div>
+				<dt>{String(guideCount).padStart(2, '0')}</dt>
+				<dd>篇指南</dd>
+			</div>
+			<div>
+				<dt>{String(tutorialCount).padStart(2, '0')}</dt>
+				<dd>个实操教程</dd>
+			</div>
+			<div>
+				<dt>0 元</dt>
+				<dd>永久免费</dd>
+			</div>
+		</dl>
+
+		<section class="section" aria-labelledby="trail-heading">
+			<header class="section-head">
+				<p class="kicker">01 / The Trail</p>
+				<h2 id="trail-heading">六段路，从第一次提问到独立驾驭</h2>
+				<p class="lede">按顺序走，或按需要跳读。每一站都给出能立刻上手的方法，也标明这项能力的边界。</p>
+			</header>
+
+			<ol class="trail">
+				{
+					stages.map((stage, index) => (
+						<li>
+							<a class="trail-card" href={`${base}${stage.dir}/`}>
+								<span class="trail-num">{String(index + 1).padStart(2, '0')}</span>
+								<span class="trail-icon" aria-hidden="true">{stage.icon}</span>
+								<span class="trail-body">
+									<span class="trail-label">{stage.label}</span>
+									<h3>{stage.title}</h3>
+									<p>{stage.desc}</p>
+								</span>
+								<span class="trail-meta">
+									{stage.count} 篇
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+								</span>
+							</a>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<section class="section" aria-labelledby="quick-heading">
+			<header class="section-head">
+				<p class="kicker">02 / Quick Start</p>
+				<h2 id="quick-heading">今天就能用上的三件事</h2>
+				<p class="lede">不急着系统学习。先挑一件马上要交的活，把 AI 用进真实任务里。</p>
+			</header>
+
+			<div class="quick">
+				{
+					quickStarts.map((item) => (
+						<a class={`quick-card tone-${item.tone}`} href={item.href}>
+							<span class="quick-tag">{item.tag}</span>
+							<h3>{item.title}</h3>
+							<p>{item.desc}</p>
+							<span class="quick-link">
+								打开指南
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+							</span>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="rules-heading">
+			<header class="section-head">
+				<p class="kicker">03 / Field Notes</p>
+				<h2 id="rules-heading">三条守则，比技巧更重要</h2>
+			</header>
+
+			<div class="rules">
+				{
+					rules.map((rule) => (
+						<article class="rule">
+							<span class="rule-num">{rule.num}</span>
+							<h3>{rule.title}</h3>
+							<p>{rule.desc}</p>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="cta" aria-labelledby="cta-heading">
+			<div class="cta-inner">
+				<p class="kicker">Join the Pioneers</p>
+				<h2 id="cta-heading">开荒不是一个人的事</h2>
+				<p>把你的经验、教程和资源留在社区里。下一位打开这份指南的人，会因此少走一段夜路。</p>
+				<div class="cta-actions">
+					<a class="cta-button primary" href={`${base}06-community/`}>
+						进入社区
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+					</a>
+					<a class="cta-button ghost" href={repoUrl} target="_blank" rel="noreferrer">GitHub 仓库</a>
+				</div>
+			</div>
+		</section>
+
+		<footer class="home-foot">
+			<span>大学生 AI 开荒指南 · 开源共建</span>
+			<a href={repoUrl} target="_blank" rel="noreferrer">纠错与补充 →</a>
+		</footer>
+	</div>
+</StarlightPage>
+
+<style>
+	.home {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(4rem, 8vw, 6.5rem);
+		padding-block: 2rem 4rem;
+	}
+
+	/* ---------- Stats ---------- */
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		margin: 0;
+		border-block: 1px solid var(--line);
+	}
+	.stats > div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 1.25rem 0.25rem 1.15rem;
+	}
+	.stats > div + div {
+		border-inline-start: 1px solid var(--line);
+		padding-inline-start: 1.25rem;
+	}
+	.stats > div:nth-child(3) {
+		border-inline-start: none;
+		padding-inline-start: 0.25rem;
+		border-top: 1px solid var(--line);
+	}
+	.stats > div:nth-child(4) {
+		border-top: 1px solid var(--line);
+	}
+	.stats dt {
+		font-family: var(--font-display);
+		font-size: clamp(1.7rem, 1.2rem + 1.4vw, 2.35rem);
+		font-weight: 700;
+		line-height: 1;
+		color: var(--ink);
+		font-variant-numeric: tabular-nums;
+	}
+	.stats dd {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+
+	/* ---------- Section scaffolding ---------- */
+	.section {
+		display: flex;
+		flex-direction: column;
+		gap: 2.25rem;
+	}
+	.section-head {
+		max-width: 46rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+	}
+	.kicker {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--ember);
+	}
+	.section-head h2,
+	.cta h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.6rem, 1.15rem + 1.9vw, 2.5rem);
+		font-weight: 700;
+		line-height: 1.32;
+		color: var(--ink);
+		letter-spacing: 0.01em;
+	}
+	.lede {
+		margin: 0;
+		max-width: 40rem;
+		color: var(--ink-soft);
+		font-size: 1.02rem;
+		line-height: 1.8;
+	}
+
+	/* ---------- Trail ---------- */
+	.trail {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.9rem;
+	}
+	.trail li {
+		margin: 0;
+	}
+	.trail-card {
+		position: relative;
+		display: grid;
+		grid-template-columns: auto auto 1fr;
+		grid-template-areas:
+			'num icon body'
+			'meta meta meta';
+		gap: 0.55rem 0.9rem;
+		align-items: start;
+		padding: 1.25rem 1.25rem 1rem;
+		background: var(--paper-raised);
+		border: 1px solid var(--line);
+		border-radius: 10px;
+		text-decoration: none;
+		color: inherit;
+		overflow: hidden;
+		box-shadow: 0 1px 0 rgba(35, 32, 22, 0.03);
+		transition:
+			transform 0.25s ease,
+			border-color 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+	.trail-card::after {
+		content: '';
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block: 0;
+		width: 3px;
+		background: var(--ember);
+		transform: scaleY(0);
+		transform-origin: top;
+		transition: transform 0.25s ease;
+	}
+	.trail-card:hover {
+		transform: translateY(-3px);
+		border-color: var(--line-strong);
+		box-shadow: 0 18px 34px -26px rgba(24, 34, 26, 0.55);
+	}
+	.trail-card:hover::after {
+		transform: scaleY(1);
+	}
+	.trail-num {
+		grid-area: num;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.12em;
+		color: var(--ink-faint);
+		padding-top: 0.45rem;
+		font-variant-numeric: tabular-nums;
+	}
+	.trail-icon {
+		grid-area: icon;
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background: var(--paper);
+		border: 1px solid var(--line);
+		font-size: 1.15rem;
+		line-height: 1;
+	}
+	.trail-body {
+		grid-area: body;
+		display: flex;
+		flex-direction: column;
+		gap: 0.28rem;
+	}
+	.trail-label {
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+	.trail-body h3 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.18rem;
+		font-weight: 700;
+		color: var(--ink);
+		line-height: 1.4;
+	}
+	.trail-body p {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		color: var(--ink-soft);
+	}
+	.trail-meta {
+		grid-area: meta;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		justify-self: end;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.06em;
+		color: var(--ink-faint);
+	}
+	.trail-meta svg {
+		width: 15px;
+		height: 15px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		transition: transform 0.25s ease;
+	}
+	.trail-card:hover .trail-meta {
+		color: var(--ember);
+	}
+	.trail-card:hover .trail-meta svg {
+		transform: translateX(3px);
+	}
+
+	/* ---------- Quick start ---------- */
+	.quick {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	.quick-card {
+		--tone: var(--pine);
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1.5rem 1.4rem 1.35rem;
+		border: 1px solid var(--line);
+		border-radius: 12px;
+		background:
+			linear-gradient(180deg, color-mix(in srgb, var(--tone) 7%, transparent), transparent 55%),
+			var(--paper-raised);
+		text-decoration: none;
+		color: inherit;
+		transition:
+			transform 0.25s ease,
+			border-color 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+	.quick-card::before {
+		content: '';
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline: 1.4rem;
+		height: 2px;
+		background: var(--tone);
+		border-radius: 0 0 2px 2px;
+		opacity: 0.85;
+	}
+	.quick-card.tone-ember {
+		--tone: var(--ember);
+	}
+	.quick-card.tone-gold {
+		--tone: var(--gold);
+	}
+	.quick-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--tone) 45%, var(--line));
+		box-shadow: 0 18px 34px -26px rgba(24, 34, 26, 0.5);
+	}
+	.quick-tag {
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--tone);
+	}
+	.quick-card h3 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: var(--ink);
+		line-height: 1.45;
+	}
+	.quick-card p {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		color: var(--ink-soft);
+	}
+	.quick-link {
+		margin-top: auto;
+		padding-top: 0.6rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.08em;
+		color: var(--tone);
+	}
+	.quick-link svg {
+		width: 15px;
+		height: 15px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		transition: transform 0.25s ease;
+	}
+	.quick-card:hover .quick-link svg {
+		transform: translateX(3px);
+	}
+
+	/* ---------- Rules ---------- */
+	.rules {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+		border-top: 1px solid var(--line);
+	}
+	.rule {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			'num title'
+			'num desc';
+		gap: 0.25rem 1.1rem;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--line);
+	}
+	.rule-num {
+		grid-area: num;
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 1;
+		color: var(--ember);
+		min-width: 2rem;
+	}
+	.rule h3 {
+		grid-area: title;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--ink);
+	}
+	.rule p {
+		grid-area: desc;
+		margin: 0;
+		font-size: 0.92rem;
+		line-height: 1.75;
+		color: var(--ink-soft);
+		max-width: 38rem;
+	}
+
+	/* ---------- CTA ---------- */
+	.cta {
+		position: relative;
+		overflow: hidden;
+		border-radius: 16px;
+		padding: clamp(2rem, 4vw, 3.25rem);
+		background:
+			radial-gradient(circle at 82% 18%, rgba(232, 135, 90, 0.22), transparent 45%),
+			repeating-linear-gradient(115deg, transparent 0 46px, rgba(255, 255, 255, 0.03) 46px 47px),
+			var(--band-bg);
+		border: 1px solid var(--band-line);
+		color: var(--band-ink);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.06),
+			0 30px 60px -50px rgba(0, 0, 0, 0.8);
+	}
+	.cta .kicker {
+		color: var(--band-accent);
+	}
+	.cta h2 {
+		color: var(--band-ink);
+		margin-top: 0.7rem;
+	}
+	.cta p:not(.kicker) {
+		margin: 0.9rem 0 0;
+		max-width: 38rem;
+		color: var(--band-soft);
+		line-height: 1.8;
+	}
+	.cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 1.75rem;
+	}
+	.cta-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.7rem 1.25rem;
+		border-radius: 7px;
+		font-size: 0.92rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+	.cta-button:hover {
+		transform: translateY(-2px);
+	}
+	.cta-button svg {
+		width: 16px;
+		height: 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.9;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+	.cta-button.primary {
+		background: var(--band-accent);
+		color: #20140e;
+	}
+	.cta-button.primary:hover {
+		background: color-mix(in srgb, var(--band-accent) 88%, white);
+	}
+	.cta-button.ghost {
+		border: 1px solid var(--band-line-strong);
+		color: var(--band-ink);
+	}
+	.cta-button.ghost:hover {
+		border-color: var(--band-accent);
+		color: var(--band-accent);
+	}
+
+	/* ---------- Footer ---------- */
+	.home-foot {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--line);
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.06em;
+		color: var(--ink-faint);
+	}
+	.home-foot a {
+		color: var(--ink-soft);
+		text-decoration: none;
+	}
+	.home-foot a:hover {
+		color: var(--ember);
+	}
+
+	/* ---------- Responsive ---------- */
+	@media (min-width: 40rem) {
+		.stats {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+		.stats > div:nth-child(3) {
+			border-top: none;
+			padding-inline-start: 1.25rem;
+			border-inline-start: 1px solid var(--line);
+		}
+		.stats > div:nth-child(4) {
+			border-top: none;
+		}
+		.trail {
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+		}
+		.quick {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+	@media (min-width: 60rem) {
+		.trail-card {
+			grid-template-columns: auto auto 1fr auto;
+			grid-template-areas: 'num icon body meta';
+			align-items: center;
+			padding: 1.35rem 1.4rem;
+		}
+		.trail-meta {
+			writing-mode: horizontal-tb;
+		}
+		.rules {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 2rem;
+			border-top: none;
+		}
+		.rule {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'num'
+				'title'
+				'desc';
+			border-bottom: none;
+			border-top: 1px solid var(--line);
+			padding-top: 1.35rem;
+			gap: 0.5rem;
+		}
+	}
+
+	:global([data-theme='dark']) .trail-card {
+		box-shadow: none;
+	}
+	:global([data-theme='dark']) .trail-card:hover,
+	:global([data-theme='dark']) .quick-card:hover {
+		box-shadow: 0 18px 34px -26px rgba(0, 0, 0, 0.9);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.trail-card,
+		.quick-card,
+		.cta-button,
+		.trail-meta svg,
+		.quick-link svg {
+			transition: none;
+		}
+	}
+</style>

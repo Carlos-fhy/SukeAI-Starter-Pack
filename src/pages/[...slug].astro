@@ -4,7 +4,8 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const entries = await getCollection('docs');
-  return entries.map((entry) => ({
+  // The `404` entry is rendered by Starlight’s dedicated 404 route, not here.
+  return entries.filter((entry) => entry.slug !== '404').map((entry) => ({
     params: { slug: entry.slug || undefined },
     props: { entry }
   }));
