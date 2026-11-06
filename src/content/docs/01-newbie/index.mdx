@@ -1,8 +1,8 @@
 ---
-title: 第一阶段：新手村
-description: 从第一次对话到安全使用：开始用、说清楚、会核验、守住隐私。
+title: 欢迎来到新手村，冒险者！
+description: 领取 AI 搭档，从第一次对话走到独立完成任务。
 sidebar:
-  label: 阶段导览
+  label: 序章 · 欢迎来到新手村，冒险者！
   order: 0
 ---
 
@@ -12,44 +12,75 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 联合国教科文组织《生成式人工智能教育与研究指南》强调以人为中心、隐私保护和学习者的自主性：AI 是学习辅助工具，不是责任的替代者（[UNESCO](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research)）。
 
-## 学习路径
+## 开荒地图
+
+按顺序走完八关，最后完成一次独立任务。遇到陌生术语或操作问题，可以随时翻到后面的随身参考。
 
 <CardGrid>
   <LinkCard
-    title="国内 AI 平台"
+    title="01 · 领取你的初始 AI 搭档"
     description="认官方入口，选一个固定下来。"
     href="platforms/"
     icon="globe"
   />
   <LinkCard
-    title="第一次对话"
+    title="02 · “你好，听得到吗？”"
     description="提问、追问、重开、保存。"
     href="first-chat/"
     icon="chat"
   />
   <LinkCard
-    title="把话说清楚"
+    title="03 · 打开技能栏：原来你还会这些！"
+    description="认识搜索、深度思考、附件与语音。"
+    href="features/"
+    icon="setting"
+  />
+  <LinkCard
+    title="04 · 任务发布失败：请别只说“帮帮我”"
     description="用背景、目标、材料、格式交代任务。"
     href="clear-prompt/"
     icon="lightbulb"
   />
   <LinkCard
-    title="判断与验证"
+    title="05 · 背包里的线索，记得交给搭档"
+    description="提供图片、文档和表格，先检查它有没有读对。"
+    href="materials/"
+    icon="document"
+  />
+  <LinkCard
+    title="06 · 它说得如此笃定，你却发现了破绽"
     description="查证回答里的关键事实。"
     href="verify-answer/"
     icon="check-circle"
   />
   <LinkCard
-    title="安全与隐私"
+    title="07 · 临行前，守村人叫住了你"
     description="信息分级、平台设置、使用边界。"
     href="privacy-safety/"
     icon="shield"
   />
   <LinkCard
-    title="概念速查"
+    title="08 · 村口已到，接下来由你带路"
+    description="完成一次提问、修改、核验与保存。"
+    href="graduation/"
+    icon="right-arrow"
+  />
+</CardGrid>
+
+## 随身参考
+
+<CardGrid>
+  <LinkCard
+    title="行囊里那本翻旧的手册"
     description="不用通读 · 碰到不认识的词再翻。"
     href="concepts/"
     icon="document"
+  />
+  <LinkCard
+    title="遇到麻烦，就回营地坐坐"
+    description="找不到按钮、上传失败、回答中断时，来这里找办法。"
+    href="troubleshooting/"
+    icon="chat"
   />
 </CardGrid>
 
@@ -65,6 +96,7 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 - 我能说出三个国内平台的官方入口，并选定一个固定使用。
 - 我能发起、追问、重开，并找到历史对话。
+- 我能按任务需要选择常用功能，并检查材料有没有被正确读取。
 - 我能用背景、目标、材料、输出格式描述任务。
 - 我知道 AI 可能编造文献、数字和通知，并会回到原始资料核对。
 - 我能分辨公开、需脱敏与不可外传的信息。
@@ -73,5 +105,5 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 </div>
 
 :::tip[最后一步实战]
-拿一门真正不懂的课，用四要素提问；从回答里挑一条可检查的事实，找到原始来源；再检查这次对话有没有用到不该上传的信息。三步都完成，这一阶段就通关了。
+到[出村试炼](graduation/)里，用自己有权使用的学习笔记做一张复习卡。完成提问、修改、核验和保存，再检查有没有用到不该上传的信息。
 :::

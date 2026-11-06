@@ -1,7 +1,8 @@
 ---
-title: 国内 AI 平台
+title: 领取你的初始 AI 搭档
 description: 先知道门在哪里，再决定进哪一扇。
 sidebar:
+  label: '01 · 领取你的初始 AI 搭档'
   order: 1
 ---
 
