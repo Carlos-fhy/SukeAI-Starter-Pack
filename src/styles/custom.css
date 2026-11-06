@@ -723,7 +723,191 @@ html[data-has-hero] main > .content-panel:first-of-type::before {
 	}
 }
 
-/* ---------- Motion ---------- */
+/* ---------- 卡片高级设计 ---------- */
+.sl-link-card {
+  border: 1px solid var(--line) !important;
+  background: var(--paper-raised) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px -16px rgb(232 135 90 / 0.18) !important;
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.sl-link-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px -15px rgb(232 135 90 / 0.28) !important;
+  border-color: var(--ember) !important;
+}
+
+.sl-link-card .icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.sl-link-card:hover .icon {
+  transform: scale(1.25) rotate(8deg);
+}
+
+.sl-markdown-content blockquote {
+  position: relative;
+  padding: 1.35rem 1.8rem 1.35rem 2.4rem;
+  border-inline-start: 5px solid var(--ember);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--paper-raised) 55%, transparent) 0%, transparent 70%);
+  border-radius: 0 14px 14px 0;
+}
+
+.sl-markdown-content blockquote::before {
+  content: '“';
+  font-size: 9rem;
+  position: absolute;
+  left: 1.2rem;
+  top: -0.6rem;
+  opacity: 0.07;
+  line-height: 1;
+  color: var(--ember);
+  font-family: var(--font-display);
+  pointer-events: none;
+}
+
+.sl-markdown-content table {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px -8px rgb(232 135 90 / 0.12);
+}
+
+.sl-markdown-content pre {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px -8px rgb(0 0 0 / 0.15);
+}
+
+.sl-markdown-content code {
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgb(0 0 0 / 0.08);
+}
+
+/* 对比示例卡片 */
+.example-contrast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.example-contrast > div {
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  background: var(--paper-raised);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.example-contrast .good {
+  border-left: 5px solid var(--ember);
+  background: color-mix(in srgb, var(--ember) 8%, var(--paper-raised));
+}
+
+.example-contrast .bad {
+  border-left: 5px solid var(--line-strong);
+  background: color-mix(in srgb, var(--paper-raised) 55%, transparent);
+}
+
+.example-contrast .good::before,
+.example-contrast .bad::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.03));
+  z-index: -1;
+}
+
+.example-contrast .good {
+  box-shadow: 0 4px 15px -5px rgb(232 135 90 / 0.25);
+}
+
+.example-contrast .bad {
+  box-shadow: 0 4px 15px -5px rgb(90 90 90 / 0.18);
+}
+
+.example-contrast .label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.65rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-block;
+  background: color-mix(in srgb, var(--line) 10%, transparent);
+}
+
+.example-contrast .good .label {
+  background: color-mix(in srgb, var(--ember) 20%, var(--paper-raised));
+  color: var(--ember);
+}
+
+.example-contrast .bad .label {
+  color: var(--ink-soft);
+}
+
+/* 通关任务优化 */
+.task-list {
+  counter-reset: task;
+}
+
+.task-list li {
+  counter-increment: task;
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 1rem;
+  line-height: 1.65;
+}
+
+.task-list li:before {
+  content: counter(task);
+  position: absolute;
+  left: 0.4rem;
+  top: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ember), #f29a6e);
+  color: #1a1f17;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 1.05rem;
+  z-index: 3;
+  box-shadow: 0 3px 8px -2px rgb(232 135 90 / 0.4);
+}
+
+.task-list li.done {
+  opacity: 0.7;
+  text-decoration: line-through;
+  color: var(--ink-soft);
+  transition: all 0.2s ease;
+}
+
+/* 页面标题美化 */
+.sl-markdown-content h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  position: relative;
+}
+
+.sl-markdown-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 68px;
+  height: 3px;
+  background: linear-gradient(to right, var(--ember), var(--gold));
+  border-radius: 9999px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.hero .copy > *,
 	.hero .actions {
