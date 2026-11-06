@@ -7,27 +7,18 @@ sidebar:
 
 开荒第一步不是比参数，是知道入口在哪。下面这些平台的官方站点，都能在国内网络下直接打开，注册也不需要额外条件。
 
----
-title: 常见国内 AI 平台
-description: 先知道门在哪里，再决定进哪一扇。
-sidebar:
-  order: 1
----
-
-开荒第一步不是比参数，是知道入口在哪。下面这些平台的官方站点，都能在国内网络下直接打开，注册也不需要额外条件。
-
 ## 快速选平台三连问
 
-| 平台 | 厂商 | 官方入口 | 推荐场景 | 免费额度 | 我的选择 |
-| --- | --- | --- | --- | --- | --- |
-| 豆包 | 字节跳动 | [doubao.com](https://www.doubao.com/) | 日常问答、写作、图片与语音 | 每天 200 条消息 |  |
-| DeepSeek | 深度求索 | [chat.deepseek.com](https://chat.deepseek.com/) | 逻辑推理、编程、长文本分析 | 每天 120 条 |  |
-| 千问 | 阿里巴巴 | [qianwen.com](https://www.qianwen.com/) | 中文写作、办公文档、图片与文件 | 每天 50 条 |  |
-| 文心一言 | 百度 | [yiyan.baidu.com](https://yiyan.baidu.com/) | 问答、办公与学习场景 | 每天 100 条 |  |
-| 智谱清言 | 智谱 | [chatglm.cn](https://chatglm.cn/) | 中文对话、学习辅助 | 每天 80 条 |  |
-| Kimi | 月之暗面 | [kimi.com](https://www.kimi.com/) | 长文档阅读、资料整理 | 每天 20 条 |  |
-| 腾讯元宝 | 腾讯 | [yuanbao.tencent.com](https://yuanbao.tencent.com/) | 日常问答、写作、微信生态内使用 | 每天 100 条 |  |
-| 讯飞星火 | 科大讯飞 | [xinghuo.xfyun.cn](https://xinghuo.xfyun.cn/) | 语音输入、口语练习 | 每天 80 条 |  |
+| 平台 | 厂商 | 官方入口 | 推荐场景 | 我的选择 |
+| --- | --- | --- | --- | --- |
+| 豆包 | 字节跳动 | [doubao.com](https://www.doubao.com/) | 日常问答、写作、图片与语音 |  |
+| DeepSeek | 深度求索 | [chat.deepseek.com](https://chat.deepseek.com/) | 逻辑推理、编程、长文本分析 |  |
+| 千问 | 阿里巴巴 | [qianwen.com](https://www.qianwen.com/) | 中文写作、办公文档、图片与文件 |  |
+| 文心一言 | 百度 | [yiyan.baidu.com](https://yiyan.baidu.com/) | 问答、办公与学习场景 |  |
+| 智谱清言 | 智谱 | [chatglm.cn](https://chatglm.cn/) | 中文对话、学习辅助 |  |
+| Kimi | 月之暗面 | [kimi.com](https://www.kimi.com/) | 长文档阅读、资料整理 |  |
+| 腾讯元宝 | 腾讯 | [yuanbao.tencent.com](https://yuanbao.tencent.com/) | 日常问答、写作、微信生态内使用 |  |
+| 讯飞星火 | 科大讯飞 | [xinghuo.xfyun.cn](https://xinghuo.xfyun.cn/) | 语音输入、口语练习 |  |
 
 ## 怎么从八个里选一个
 
