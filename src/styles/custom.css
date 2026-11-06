@@ -302,41 +302,6 @@ main .content-panel .sl-container > h1::after {
 	color: var(--ink-soft);
 }
 
-.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
-	font-family: var(--font-display);
-	font-weight: 700;
-	letter-spacing: 0.015em;
-	color: var(--ink);
-}
-
-.sl-markdown-content h2 {
-	position: relative;
-	margin-top: 2.4em;
-	padding-bottom: 0.42em;
-	border-bottom: 1px solid var(--line);
-	font-size: clamp(1.4rem, 1.2rem + 0.75vw, 1.7rem);
-}
-
-.sl-markdown-content h2::after {
-	content: '';
-	position: absolute;
-	inset-inline-start: 0;
-	inset-block-end: -1px;
-	width: 2.5rem;
-	height: 2px;
-	background: var(--ember);
-}
-
-.sl-markdown-content h3 {
-	margin-top: 2em;
-	font-size: 1.28rem;
-}
-
-.sl-markdown-content h4 {
-	font-size: 1.1rem;
-	color: var(--ink);
-}
-
 .sl-markdown-content p {
 	margin-block: 1.15em;
 }
@@ -491,7 +456,50 @@ main .content-panel .sl-container > h1::after {
 	border-radius: 8px;
 	border-inline-start-width: 3px;
 }
+
+/* Keep short table labels on one line */
+.sl-markdown-content .cell-nowrap {
+	white-space: nowrap;
+}
 } /* @layer site-doc */
+
+/* ---------- Doc headings ----------
+   Unlayered on purpose: Starlight's own heading rules are unlayered too, and an
+   unlayered rule always beats a layered one regardless of specificity. */
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--font-display);
+	font-weight: 700;
+	letter-spacing: 0.015em;
+	color: var(--ink);
+}
+
+.sl-markdown-content h2 {
+	position: relative;
+	margin-top: 2.4em;
+	padding-bottom: 0.42em;
+	border-bottom: 1px solid var(--line);
+	font-size: clamp(1.4rem, 1.2rem + 0.75vw, 1.7rem);
+}
+
+.sl-markdown-content h2::after {
+	content: '';
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-end: -1px;
+	width: 2.5rem;
+	height: 2px;
+	background: var(--ember);
+}
+
+.sl-markdown-content h3 {
+	margin-top: 2em;
+	font-size: 1.28rem;
+}
+
+.sl-markdown-content h4 {
+	font-size: 1.1rem;
+	color: var(--ink);
+}
 
 /* ---------- Right sidebar (table of contents) ---------- */
 .right-sidebar-panel {
