@@ -1,5 +1,5 @@
 ---
-title: 常见国内 AI 平台
+title: 国内 AI 平台
 description: 先知道门在哪里，再决定进哪一扇。
 sidebar:
   order: 1
